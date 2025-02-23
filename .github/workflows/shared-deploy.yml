@@ -1,0 +1,20 @@
+# might be important
+# https://docs.github.com/en/actions/sharing-automations/sharing-actions-and-workflows-from-your-private-repository
+
+name: Shared Deploy
+
+on:
+  workflow_dispatch:
+    # can also make a manual trigger to deploy PR to sandbox/dev
+  pull_request:
+    # branches:
+    #   - main
+  workflow_call:
+
+
+jobs:
+  push-image-to-ecr:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Push image to ECR
+      run: echo "Pushing image to ECR"
