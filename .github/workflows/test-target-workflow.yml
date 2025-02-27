@@ -22,7 +22,7 @@ jobs:
 
     - name: Get inputs for triggering workflow
       run: |
-        service_name=${{ github.event.client_payload.service_name }}
+        service=${{ github.event.client_payload.service }}
         echo "Service name is $service"
 
         version=${{ github.event.client_payload.version }}
