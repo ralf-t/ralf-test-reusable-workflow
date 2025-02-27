@@ -1,0 +1,29 @@
+name: Target Workflow
+
+on:
+  repository_dispatch:
+    types: [trigger-workflow]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+      ref: ${{ github.event.client_payload.sha }} # what is this for
+
+    - name: Run a one-line script
+      run: echo You can reached the target workflow
+
+    - name: Deploy ECS
+      run: echo Deploying image to ECS
+
+    - name: Get inputs for triggering workflow
+      run: |
+        service_name=${{ github.event.client_payload.service_name }}
+        echo "Service name is $service_name"
+
+        version=${{ github.event.client_payload.version }}
+        echo "Version is $version"
