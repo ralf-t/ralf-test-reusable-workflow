@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-      ref: ${{ github.event.client_payload.sha }} # what is this for
+        ref: ${{ github.event.client_payload.sha }} # what is this for
 
     - name: Run a one-line script
       run: echo You can reached the target workflow
